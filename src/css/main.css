@@ -1,0 +1,22 @@
+body {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.form {
+    width: 160px;
+}
+.btn {
+    width: 100%;
+}
+.form-error {
+    position: absolute;
+    padding: 5px 10px;
+    width: 200px;
+    background: #fff;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+h4 {
+    margin: 0;
+}
