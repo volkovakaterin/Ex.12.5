@@ -1,8 +1,10 @@
 /* eslint-disable linebreak-style */
 export default class Tooltip {
-  constructor() {
-    this.tooltip = 0;
+  constructor(parentEl) {
+    this.parentEl = parentEl;
+    this.tooltip = undefined;
     this.removeTooltip = this.removeTooltip.bind(this);
+    this.targetElem = undefined;
   }
 
   addTooltip(message, targetElem) {
@@ -10,13 +12,14 @@ export default class Tooltip {
     tooltip.className = 'form-error';
     tooltip.innerHTML = `<h4>Popover title</h4> <div>${message}</div>`;
     this.tooltip = tooltip;
-    document.body.appendChild(tooltip);
+    this.parentEl.appendChild(tooltip);
     if (targetElem) {
-      const coords = targetElem.getBoundingClientRect();
-      tooltip.style.top = `${coords.top - tooltip.offsetHeight}px`;
-      tooltip.style.left = `${coords.right - coords.width / 2 - tooltip.offsetWidth / 2}px`;
+      this.targetElem = this.parentEl.querySelector(targetElem);
+      const coords = this.targetElem.getBoundingClientRect();
+      this.tooltip.style.top = `${coords.top - tooltip.offsetHeight}px`;
+      this.tooltip.style.left = `${coords.right - coords.width / 2 - tooltip.offsetWidth / 2}px`;
     }
-    setTimeout(this.removeTooltip, 2000);
+    setTimeout(this.removeTooltip, 5000);
   }
 
   removeTooltip() {

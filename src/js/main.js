@@ -1,7 +1,12 @@
 /* eslint-disable linebreak-style */
-import Popover from './popover';
-import Tooltip from './tooltip';
 
-const popover = new Popover('.form', new Tooltip());
+import Init from './init';
 
-window.popover = popover;
+document.body.innerHTML = '<div id="container"></div>';
+const container = document.querySelector('#container');
+const init = new Init(container);
+init.bindToDOM();
+
+// const pressButton = new PressButton('.form', new Tooltip());
+
+// window.pressButton = pressButton;
